@@ -47,8 +47,11 @@ Webhooks allow you to build or set up integrations which subscribe to certain ev
 Inorder to configure webhook you will need three things :
 
 1.To get started login to your github account and select a particular repository
+
 2.Next navigate to Settings tab where you will find Webhook option of left side bar
+
 3.Click on Create webhook, fill in the appropriate details such as Payload URL which is basically the DNS of your jenkins server.
+
 4.Select Content Type as shown in image below
 
 
