@@ -22,6 +22,23 @@ sudo yum install -y apache-maven
 mvn –v
 
 Step 4.  Install Jenkins 
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+
+sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+
+sudo yum install jenkins
+
+sudo service jenkins start
+
+sudo chkconfig --add jenkins
+
+That’s it! Now you can go to URL http://<instance ip>:8080
+
+If you’re unable to see the Jenkins page, check security groups restrictions. You can also change the port for Jenkins manually if you want to run it on a different port.
+
+Step 5. Setup Jenkins
+
+This is the first screen you will after going to http://<instance ip>:8080
 
 -----------------------------------------------------------------------------------------------------------------------------
 STEP 1 :  CREATE GITHUB WEBHOOK
@@ -29,15 +46,12 @@ Webhooks allow you to build or set up integrations which subscribe to certain ev
 
 Inorder to configure webhook you will need three things :
 
-A github account with a public or a private repository
-A Payload URL – In this case IP address and port to your Jenkins server.
-Proper security group port listening to 0.0.0.0/0 or ip address range of github – As the notification from Github are sent to payload url whenever there are change in repository code.
-Step-by-step instruction:
+1.To get started login to your github account and select a particular repository
+2.Next navigate to Settings tab where you will find Webhook option of left side bar
+3.Click on Create webhook, fill in the appropriate details such as Payload URL which is basically the DNS of your jenkins server.
+4.Select Content Type as shown in image below
 
-To get started login to your github account and select a particular repository
-Next navigate to Settings tab where you will find Webhook option of left side bar
-Click on Create webhook, fill in the appropriate details such as Payload URL which is basically the DNS of your jenkins server.
-Select Content Type as shown in image below
+
 
 
 Leave the Secret field empty as it not relevant for this task 
@@ -86,21 +100,5 @@ If it shows red sign than there is an issue as the github is not able to communi
 
 This way you can Run Jenkins Job on Git Push Event Automatically, you can enhance the your job to send email on every failure which will give you automatic notifications about every build status. This surely will help developers to worry less about build and deployment.
 
-sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
 
-sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
-
-sudo yum install jenkins
-
-sudo service jenkins start
-
-sudo chkconfig --add jenkins
-
-That’s it! Now you can go to URL http://<instance ip>:8080
-
-If you’re unable to see the Jenkins page, check security groups restrictions. You can also change the port for Jenkins manually if you want to run it on a different port.
-
-Step 5. Setup Jenkins
-
-This is the first screen you will after going to http://<instance ip>:8080
 
