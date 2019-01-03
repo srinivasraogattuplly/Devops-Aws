@@ -1,5 +1,6 @@
 # Devops-Aws
 Devops tools on Aws
+
  Step 1.  Launch an instance (Amazon Linux) 
 
 Step 2.  Login to the instance, install and setup java environment 
